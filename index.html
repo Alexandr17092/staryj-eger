@@ -178,6 +178,13 @@ body.mopen{overflow:hidden}
 .fchips::after{right:-5px}
 .fchips span{color:var(--accent2);font-family:"Playfair Display",Georgia,serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 0}
 .fchips span:not(:last-child)::after{content:"◆";margin:0 16px;font-size:7px;color:var(--accent);vertical-align:middle}
+@media(max-width:720px){
+header.top{display:block;position:relative;padding-top:20px;padding-bottom:6px}
+.logo{display:block}
+.lang{position:absolute;top:18px;right:22px;margin:0}
+nav{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;margin-top:16px;width:100%}
+nav a{margin-left:0;font-size:.92rem}
+}
 .hero{position:relative;overflow:hidden}
 .hero>*:not(.sparks){position:relative;z-index:1}
 .sparks{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
