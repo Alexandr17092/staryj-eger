@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Старый Егерь — шашлыки на углях</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap">
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window)document.documentElement.classList.add('js')}catch(e){}</script>
+<style>
+:root{
+  --bg:#120d0a; --bg2:#1c1410; --card:#251a14; --line:#4a3426;
+  --text:#f0e4d4; --muted:#b09a84; --accent:#c98a4b; --accent2:#e0a869;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#120d0a;--bg2:#1c1410;--card:#251a14;--line:#4a3426;--text:#f0e4d4;--muted:#b09a84;--accent:#c98a4b;--accent2:#e0a869;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#120d0a;--bg2:#1c1410;--card:#251a14;--line:#4a3426;--text:#f0e4d4;--muted:#b09a84;--accent:#c98a4b;--accent2:#e0a869}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Lora",Georgia,"Times New Roman",serif;line-height:1.65;font-size:18px}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;margin:0;line-height:1.15}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;max-width:1000px;margin:0 auto}
+.logo{font-family:"Playfair Display",Georgia,serif;font-size:1.2rem;color:var(--accent2);letter-spacing:.04em;text-decoration:none}
+nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-size:.95rem}
+nav a:hover,nav a:focus-visible{color:var(--accent2)}
+.hero{text-align:center;padding:70px 22px 90px;background:linear-gradient(180deg,var(--bg) 0%,rgba(18,13,10,0) 28%,rgba(18,13,10,0) 62%,var(--bg) 100%),radial-gradient(ellipse at 50% 40%,#432a1b 0%,var(--bg) 70%)}
+.hero h1{font-size:clamp(2.8rem,10vw,5.6rem);color:var(--accent2);letter-spacing:.01em}
+.hero p{max-width:34ch;margin:22px auto 32px;color:var(--muted);font-size:1.2rem}
+.btn{display:inline-block;padding:14px 30px;background:var(--accent);color:#1a0f08;text-decoration:none;font-weight:700;border-radius:3px}
+.btn:hover,.btn:focus-visible{background:var(--accent2)}
+.hero small{display:block;margin-top:26px;color:var(--muted);font-size:.9rem}
+section{padding:70px 0}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(1.9rem,5vw,2.6rem);color:var(--accent2);margin-bottom:12px}
+.lead{color:var(--muted);max-width:54ch;margin:0 0 36px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.dish{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px}
+.dish.big{grid-column:1/-1;border-color:var(--accent);background:linear-gradient(135deg,#31201a,var(--card))}
+.dish h3{font-size:1.45rem;margin-bottom:8px}
+.dish p{margin:0;color:var(--muted);font-size:1rem}
+.dish .tag{display:inline-block;margin-bottom:10px;color:var(--accent);font-size:.85rem;border:1px solid var(--accent);padding:2px 10px;border-radius:20px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.about p{margin:0 0 16px;color:var(--text)}
+.facts{list-style:none;margin:0;padding:0;border-left:2px solid var(--accent)}
+.facts li{padding:10px 0 10px 20px;color:var(--muted)}
+.facts b{color:var(--text);font-weight:400;display:block}
+.note{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px;max-width:60ch}
+footer{padding:44px 22px;text-align:center;color:var(--muted);font-size:.95rem}
+footer strong{color:var(--accent2);font-family:"Playfair Display",Georgia,serif;font-size:1.2rem;display:block;margin-bottom:6px}
+.sub{list-style:none;margin:14px 0 0;padding:0}.sub li{padding:7px 0;border-top:1px solid var(--line);color:var(--muted);font-size:1rem}.sub b{color:var(--muted);font-weight:400}
+.dish{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background-color .25s ease}
+.dish:hover,.dish:active{transform:translateY(-6px);border-color:var(--accent2);box-shadow:0 10px 30px rgba(201,138,75,.28),0 0 0 1px rgba(224,168,105,.35)}
+.dish:hover h3,.dish:active h3{color:var(--accent2)}
+.dish h3{transition:color .25s ease}
+@media(prefers-reduced-motion:reduce){.dish,.dish h3{transition:none}.dish:hover,.dish:active{transform:none}}
+section.alt{background:linear-gradient(180deg,var(--bg) 0%,#2b1b12 50%,var(--bg) 100%)}
+#menu,#kitchen,#bar,#contacts{background:radial-gradient(ellipse at 50% 50%,rgba(201,138,75,.10) 0%,rgba(201,138,75,0) 62%)}
+#kitchen{background:linear-gradient(180deg,var(--bg) 0%,#2b1b12 50%,var(--bg) 100%)}
+.dish{background:linear-gradient(160deg,#33221a 0%,var(--card) 55%,#1d130e 100%)}
+.dish.big{background:linear-gradient(135deg,#46291b 0%,#2c1d15 60%,#1f150f 100%)}
+.note{background:linear-gradient(160deg,#33221a 0%,var(--card) 60%,#1d130e 100%)}
+.btn{background:linear-gradient(135deg,#e6b070 0%,#c98a4b 50%,#a86a35 100%)}
+.btn:hover,.btn:focus-visible{background:linear-gradient(135deg,#f0c48a 0%,#dca060 50%,#b87a40 100%)}
+.hero h1{background-image:linear-gradient(180deg,#f7dcae 0%,#e0a869 50%,#b97a3f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#e0a869}
+section h2::after{content:"";display:block;width:90px;height:3px;margin-top:10px;border-radius:2px;background:linear-gradient(90deg,var(--accent2),rgba(201,138,75,0))}
+footer{background:linear-gradient(180deg,var(--bg) 0%,#2a1a11 100%)}
+header.top{flex-wrap:wrap;gap:10px}
+nav{display:flex;align-items:center;flex-wrap:wrap}
+.lang{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-left:18px}
+.lang button{background:transparent;border:0;color:var(--muted);font:inherit;font-size:.85rem;padding:5px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--accent);color:#1a0f08}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent2)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:rgba(201,138,75,.16)}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--accent);letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;margin-bottom:18px}
+.eyebrow::before,.eyebrow::after{content:"";width:46px;height:1px;background:linear-gradient(90deg,transparent,var(--accent))}
+.eyebrow::after{transform:scaleX(-1)}
+section{position:relative}
+section::before{content:"";position:absolute;top:0;left:50%;width:min(280px,60%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+section::after{content:"◆";position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:0 10px;background:var(--bg);color:var(--accent);font-size:13px;line-height:20px}
+.dish,.note{outline:1px solid rgba(201,138,75,.22);outline-offset:-7px}
+.js .rv{opacity:0}
+.js .rv.in{opacity:1;animation:rvIn .7s ease backwards}
+@keyframes rvIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.marquee{overflow:hidden;white-space:nowrap;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee .track{display:inline-flex;animation:mq 70s linear infinite}
+.marquee .track span{font-family:"Playfair Display",Georgia,serif;font-size:1.25rem;color:var(--accent2);margin-right:26px}
+.marquee .track i{font-style:normal;color:var(--accent);font-size:.8rem;margin-right:26px;align-self:center}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee{text-align:center}.marquee .track{animation:none}}
+.bform{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:760px}
+.bform label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:.95rem}
+.bform .full{grid-column:1/-1}
+.bform input,.bform select{background:var(--card);border:1px solid var(--line);border-radius:4px;color:var(--text);font:inherit;padding:12px 14px;color-scheme:dark;width:100%}
+.bform input:focus,.bform select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.bform .btn{border:0;cursor:pointer;font:inherit;font-weight:700;justify-self:start}
+.berr{color:#e8a08a;min-height:1.4em;margin:0;grid-column:1/-1}
+.bnote{color:var(--muted);font-size:.9rem;grid-column:1/-1;margin:0}
+.dish .sub{display:none}
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,5,3,.84);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.modal[hidden]{display:none}
+.mbox{position:relative;width:min(760px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:linear-gradient(160deg,#33221a,#1d130e);border:1px solid var(--accent);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.mbox>h2{padding:22px 64px 12px 24px;font-size:1.7rem}
+.mscroll{overflow-y:auto;padding:4px 24px 26px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.mclose{position:absolute;top:12px;right:12px;width:42px;height:42px;border:0;border-radius:50%;background:transparent;color:var(--accent2);font-size:30px;line-height:1;cursor:pointer}
+.mclose:hover,.mclose:focus-visible{background:rgba(201,138,75,.18)}
+.msec h3{color:var(--accent2);font-size:1.3rem;margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.mitem{padding:10px 0}
+.mitem h4{margin:0 0 4px;font-family:"Playfair Display",Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--text)}
+.mitem p{margin:0;color:var(--muted);font-size:.98rem}
+.mitem .sub{margin-top:6px}
+.mmore{text-align:center;margin-top:32px}
+.mmore .btn{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:1.05rem;padding:16px 38px}
+body.mopen{overflow:hidden}
+.mscroll{position:relative}
+.mtabs{flex:none;min-height:46px;align-items:flex-start;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:2px 24px 14px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.mbox>h2{flex:none}
+.mscroll{flex:1 1 auto;min-height:0}
+.mtabs::-webkit-scrollbar{display:none}
+.mtab{flex:none;background:transparent;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:.88rem;padding:6px 14px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.mtab:hover,.mtab.on{border-color:var(--accent);color:var(--accent2);background:rgba(201,138,75,.12)}
+.mi{padding:12px 0;border-bottom:1px dashed rgba(74,52,38,.8)}
+.mi .row{display:flex;gap:10px;align-items:baseline}
+.mi .n{font-family:"Playfair Display",Georgia,serif;font-weight:600;color:var(--text);font-size:1.05rem}
+.mi .dots{flex:1;min-width:16px;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+.mi .pr{color:var(--accent2);font-weight:700;white-space:nowrap}
+.mi .d{color:var(--muted);font-size:.92rem;margin-top:3px;line-height:1.45}
+.rev .stars{color:var(--accent2);letter-spacing:3px;font-size:1.15rem;margin-bottom:10px}
+.rev .stars .off{color:var(--line)}
+.rev blockquote{margin:0;color:var(--text);font-size:1rem;line-height:1.6}
+.rev .who{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
+.rev .who b{color:var(--accent2);font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:1rem}
+.rsrc{margin:14px 0 0;color:var(--muted);font-size:.85rem}
+.rcta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.mmore{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.mmore .btn.ghost{border:1px solid var(--accent);color:var(--accent2)}
+.qc{display:inline-flex;align-items:center;gap:8px;margin-left:6px}
+.qb{width:30px;height:30px;border-radius:50%;border:1px solid var(--accent);background:transparent;color:var(--accent2);font:inherit;font-size:1.1rem;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.qb:hover{background:rgba(201,138,75,.2)}
+.qb.add{background:linear-gradient(135deg,#e6b070,#b87333);color:#1a0f08;border:0;font-weight:700}
+.qn{min-width:18px;text-align:center;font-weight:700;color:var(--text)}
+.mv{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:.92rem}
+.mv .vl{flex:1}
+.mbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--accent);background:rgba(18,13,10,.92)}
+.mbar[hidden]{display:none}
+.mbar .sum{color:var(--text);font-weight:700}
+.mbar .btn{border:0;cursor:pointer;font:inherit;font-weight:700;padding:11px 20px}
+.mcartview{flex:1 1 auto;min-height:0;overflow-y:auto;padding:6px 24px 24px}
+.mbox:not(.cartmode) .mcartview{display:none}
+.mbox.cartmode .mscroll,.mbox.cartmode .mtabs{display:none}
+.cback{background:none;border:0;color:var(--accent2);font:inherit;cursor:pointer;padding:8px 0}
+.ch{color:var(--accent2);font-size:1.3rem;margin:6px 0 10px}
+.cl{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.cl .cn{flex:1}
+.cl .cn small{display:block;color:var(--muted)}
+.cl .cs{white-space:nowrap;color:var(--accent2);font-weight:700;min-width:84px;text-align:right}
+.seg{display:flex;gap:8px;margin:16px 0}
+.seg button{flex:1;padding:10px;border:1px solid var(--line);background:transparent;color:var(--muted);font:inherit;border-radius:4px;cursor:pointer}
+.seg button.on{border-color:var(--accent);color:var(--accent2);background:rgba(201,138,75,.14)}
+.cf{display:grid;gap:10px;margin-bottom:6px}
+.cf input{background:var(--card);border:1px solid var(--line);border-radius:4px;color:var(--text);font:inherit;padding:12px 14px;width:100%}
+.tot .tr{display:flex;justify-content:space-between;padding:6px 0;color:var(--muted)}
+.tot .tr.big{color:var(--text);font-size:1.2rem;border-top:1px solid var(--line);margin-top:6px;padding-top:12px}
+.tot .tr.big b{color:var(--accent2)}
+.mcartview .btn{border:0;cursor:pointer;font:inherit;font-weight:700;margin-top:8px}
+#cartpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;border:0;border-radius:30px;padding:13px 24px;font:inherit;font-weight:700;color:#1a0f08;background:linear-gradient(135deg,#e6b070,#b87333);box-shadow:0 8px 24px rgba(0,0,0,.5);cursor:pointer}
+#cartpill[hidden]{display:none}
+.cta button.btn{cursor:pointer;font:inherit;font-weight:700}
+.fchips{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 0;margin:22px auto 0;max-width:760px;padding:18px 30px;position:relative;border:1px solid var(--accent);outline:1px solid rgba(201,138,75,.35);outline-offset:5px;border-radius:2px;background:linear-gradient(160deg,#33221a 0%,#1d130e 100%)}
+.fchips::before,.fchips::after{content:"◆";position:absolute;top:50%;transform:translateY(-50%);font-size:10px;line-height:1;color:var(--accent);background:var(--bg);padding:5px 0}
+.fchips::before{left:-5px}
+.fchips::after{right:-5px}
+.fchips span{color:var(--accent2);font-family:"Playfair Display",Georgia,serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 0}
+.fchips span:not(:last-child)::after{content:"◆";margin:0 16px;font-size:7px;color:var(--accent);vertical-align:middle}
+.hero{position:relative;overflow:hidden}
+.hero>*:not(.sparks){position:relative;z-index:1}
+.sparks{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.spark{position:absolute;bottom:-12px;border-radius:50%;background:radial-gradient(circle,#ffd9a0 0%,#e0a869 40%,rgba(201,138,75,0) 72%);opacity:0;animation:rise var(--t) linear var(--d) infinite}
+@keyframes rise{0%{transform:translate(0,0) scale(1);opacity:0}12%{opacity:.9}70%{opacity:.5}100%{transform:translate(var(--dx),-110vh) scale(.3);opacity:0}}
+@media(prefers-reduced-motion:reduce){.sparks{display:none}}
+@media(max-width:720px){.about{grid-template-columns:1fr}nav a{margin-left:12px}body{font-size:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="sparks" aria-hidden="true"></div>
+<header class="top">
+  <a class="logo" href="#top">Старый Егерь</a>
+  <nav><a href="#menu">Шашлыки</a><a href="#kitchen">Кухня</a><a href="#bar">Бар</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a><div class="lang"><button type="button" data-l="ru" aria-pressed="true">RU</button><button type="button" data-l="kz" aria-pressed="false">KZ</button></div></nav>
+</header>
+
+<div class="hero" id="top">
+  <div class="eyebrow">Мангал · Пицца · Пиво</div>
+  <h1>Старый Егерь</h1>
+  <p>Шашлыки на углях, пицца, роллы и холодное пиво. Заходите большой компанией.</p>
+  <div class="cta"><a class="btn" href="#menu">Смотреть меню</a><button type="button" class="btn ghost" id="ordernow">Заказать онлайн</button><a class="btn ghost" href="#book">Забронировать стол</a></div>
+  <small>Обслуживают официанты, и процент за обслуживание мы не берём</small>
+</div>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>Наполеон</span><i>◆</i><span>Баранина</span><i>◆</i><span>Люля</span><i>◆</i><span>Хачапури</span><i>◆</i><span>Роллы</span><i>◆</i><span>Прага</span><i>◆</i><span>Наполеон</span><i>◆</i><span>Баранина</span><i>◆</i><span>Люля</span><i>◆</i><span>Хачапури</span><i>◆</i><span>Роллы</span><i>◆</i><span>Прага</span><i>◆</i></div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Шашлыки на углях</h2>
+    <p class="lead">Мясо маринуем сами и жарим на живом огне.</p>
+    <div class="menu">
+      <div class="dish big">
+        <span class="tag">Фирменное</span>
+        <h3>Наполеон</h3>
+        <p>Говядина с курдюком. Сочная, сытная и с насыщенным вкусом: курдюк тает на углях и пропитывает мясо. То, за чем к нам возвращаются.</p>
+      </div>
+      <div class="dish"><h3>Баранина</h3><p>Нежное мясо с ароматом дымка.</p></div>
+      <div class="dish"><h3>Курица</h3><p>Мягкая и румяная, в пряном маринаде.</p><ul class="sub"><li><b>Куриное филе</b></li><li><b>Окорочка</b></li></ul></div>
+      <div class="dish"><h3>Утка</h3><p>Ароматное мясо с хрустящей корочкой.</p><ul class="sub"><li><b>Утиное филе</b></li></ul></div>
+      <div class="dish"><h3>Свинина</h3><p>Сочная, с золотистой корочкой.</p><ul class="sub"><li><b>Шея</b>: жирная, сочная</li><li><b>Карбонат</b>: нежирная, сухая</li><li><b>Корейка</b>: свинина на рёбрах</li></ul></div>
+      <div class="dish"><h3>Люля</h3><p>Рубленое мясо со специями на шампуре.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="kitchen">
+  <div class="wrap">
+    <h2>Из кухни</h2>
+    <p class="lead">Кроме мангала, у нас есть блюда на любой вкус.</p>
+    <div class="menu">
+      <div class="dish"><h3>Первые блюда</h3><p>Горячие и наваристые.</p></div>
+      <div class="dish"><h3>Вторые блюда</h3><p>Сытные горячие блюда.</p></div>
+      <div class="dish"><h3>Пиццы</h3><p>Горячие, прямо из печи.</p><ul class="sub"><li><b>Пепперони</b></li><li><b>Фирменная</b></li><li><b>Цезарь</b></li><li><b>И другие</b></li></ul></div>
+      <div class="dish"><h3>Роллы</h3><p>Нежный рис, нори и свежая начинка.</p><ul class="sub"><li><b>Холодные</b></li><li><b>Запечённые</b></li><li><b>Жареные</b></li></ul></div>
+      <div class="dish"><h3>Донеры</h3><p>Сытно и быстро.</p><ul class="sub"><li><b>Классические</b></li><li><b>Жареные</b></li></ul></div>
+      <div class="dish"><h3>Хачапури</h3><p>Румяное тесто и тягучая начинка.</p><ul class="sub"><li><b>С сыром</b></li><li><b>С ветчиной</b></li><li><b>И другие</b></li></ul></div>
+      <div class="dish"><h3>Салаты</h3><p>Свежие овощи и сытные заправки к мясу и пиву.</p><ul class="sub"><li><b>Цезарь с креветкой</b></li><li><b>Цезарь с лососем</b></li><li><b>Цезарь с курицей</b></li><li><b>Тайский</b></li><li><b>Баклажаны Лаоганма</b></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="bar">
+  <div class="wrap">
+    <h2>Бар</h2>
+    <p class="lead">Пиво к шашлыку, коктейли для компании и молочные коктейли для всех остальных.</p>
+    <div class="menu">
+      <div class="dish big">
+        <span class="tag">Пиво</span>
+        <h3>Прага, Легенда, Рудный</h3>
+        <p>Прага и Легенда всегда в меню. Рудный бывает не всегда, поэтому уточняйте у официантов или администратора. К пиву у нас есть закуски.</p>
+      </div>
+      <div class="dish"><h3>Закуски к пиву</h3><p>Чтобы пиво шло лучше.</p><ul class="sub"><li><b>Пивная тарелка 1</b></li><li><b>Пивная тарелка 2</b></li><li><b>Пивный сет 3</b></li><li><b>Пивный сет 4</b></li><li><b>Гренки</b></li><li><b>Сырные палочки</b></li><li><b>И другое</b></li></ul></div>
+      <div class="dish"><h3>Алкогольные коктейли</h3><p>Для хорошего вечера.</p><ul class="sub"><li><b>Апероль</b></li><li><b>Мимоза</b></li><li><b>Мохито</b></li><li><b>Голубая лагуна</b></li><li><b>И другое</b></li></ul></div>
+      <div class="dish"><h3>Шоты</h3><p>Компактные порции для весёлой компании.</p></div>
+      <div class="dish"><h3>Молочные коктейли</h3><p>Сладкие и холодные.</p><ul class="sub"><li><b>Малина</b></li><li><b>Клубника</b></li><li><b>Голубая лагуна</b></li><li><b>Банан</b></li><li><b>И другое</b></li></ul></div>
+    </div>
+    <div class="mmore"><button type="button" class="btn" id="openmenu">Открыть полное меню</button></div>
+    
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>Наполеон</span><i>◆</i><span>Баранина</span><i>◆</i><span>Люля</span><i>◆</i><span>Хачапури</span><i>◆</i><span>Роллы</span><i>◆</i><span>Прага</span><i>◆</i><span>Наполеон</span><i>◆</i><span>Баранина</span><i>◆</i><span>Люля</span><i>◆</i><span>Хачапури</span><i>◆</i><span>Роллы</span><i>◆</i><span>Прага</span><i>◆</i></div></div>
+
+<section class="alt" id="about">
+  <div class="wrap about">
+    <div>
+      <h2>О заведении</h2>
+      <p>«Старый Егерь» — это место, где всё начинается с живого огня. Мы маринуем мясо сами и жарим его на углях: сочную баранину, нежную курицу, утку, свинину, ароматную люля и наш фирменный «Наполеон» — говядину с курдюком, из-за которой к нам возвращаются.</p>
+      <p>Но шашлыком дело не ограничивается. У нас найдётся всё, чтобы за одним столом каждый выбрал своё: горячие пиццы, роллы, донеры, хачапури. К холодному пиву — пивные тарелки и сеты, гренки и сырные палочки. А для настроения — яркие коктейли и молочные коктейли.</p>
+      <p>Приходите после работы, в выходные или большой компанией по любому поводу. Вас встретят и обслужат официанты, а процент за обслуживание мы не берём: платите только за то, что заказали. Садитесь поудобнее, остальное сделаем мы.</p>
+    </div>
+    <ul class="facts">
+      <li><b>Без процентов за обслуживание</b>Официанты есть, наценки нет</li>
+      <li><b>Шашлыки на углях</b>Баранина, курица, утка, свинина, люля, наполеон</li>
+      <li><b>Большое меню</b>Первые и вторые блюда, пицца, роллы, донеры, хачапури, салаты</li>
+      <li><b>Бар</b>Пиво, коктейли, шоты, молочные коктейли</li>
+    </ul>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2>Отзывы гостей</h2>
+    <p class="lead">Что о нас говорят гости. Будем рады и вашему отзыву.</p>
+    <div class="menu">
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Очень понравилось, разнообразная кухня, хороший сервис. Самое лучшее — чистые туалеты. Девушка на баре приятная в общении как и официант, благодарим.</blockquote><div class="who"><b>Ali Kabdyrov</b><span>12 июля 2026</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Прекрасное заведение. Еда очень вкусная, атмосфера в заведении тоже отличная. Отдельно хочу отметить обслуживание, спасибо большое официантам</blockquote><div class="who"><b>Umi</b><span>31 июля 2026</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Добрый день. Это одно из лучших мест, где можно не только отдохнуть компанией но и семьёй. Отличный персонал, приятная атмосфера, кухня просто СУПЕР. Процветания вам. Гости из Магнитогорска</blockquote><div class="who"><b>Светлана Мальцева</b><span>14 июля</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Лучшее место в городе, цены адекватные, обслуживание огонь, еда очень вкусная, заезжайте и не думайте даже</blockquote><div class="who"><b>ТОО "ЭЛЕКОМ"</b><span>5 мая 2025</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Отличное место провести время с друзьями и вкусно покушать, еда свежая, горячее, а главное вкусная</blockquote><div class="who"><b>Алина Хадиева</b><span>17 ноября 2025</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="5 из 5">★★★★★</div><blockquote>Отличное место что бы провести время по любому поводу!!! Разнообразное меню. Вежливый и всегда учтивый персонал!!! Шашлык СУПЕР!!!</blockquote><div class="who"><b>Виктор Ф.</b><span>2 марта 2024</span></div></div>
+      <div class="dish rev"><div class="stars" aria-label="4 из 5">★★★★<span class="off">★</span></div><blockquote>Хорошее место ! Для проведения вечера в компании друзей ! Вежливый персонал !</blockquote><div class="who"><b>Алия Литовченко</b><span>17 июня 2025</span></div></div>
+    </div>
+    <p class="rsrc">Отзывы с Яндекс Карт</p>
+    <div class="rcta">
+      <a class="btn" href="https://yandex.kz/maps/?text=%D0%A1%D1%82%D0%B0%D1%80%D1%8B%D0%B9%20%D0%95%D0%B3%D0%B5%D1%80%D1%8C%20%D0%96%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%D1%80%D0%B0" target="_blank" rel="noopener">Оставить отзыв на Яндекс Картах</a>
+      <a class="btn ghost" href="https://2gis.kz/search/%D0%A1%D1%82%D0%B0%D1%80%D1%8B%D0%B9%20%D0%95%D0%B3%D0%B5%D1%80%D1%8C%20%D0%96%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%D1%80%D0%B0" target="_blank" rel="noopener">Оставить отзыв в 2ГИС</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="book">
+  <div class="wrap">
+    <h2>Забронировать стол</h2>
+    <p class="lead">Заполните форму, и мы откроем WhatsApp с готовым сообщением. Останется нажать «Отправить».</p>
+    <form id="bookform" class="bform" novalidate>
+      <label>Ваше имя<input id="bn" type="text" autocomplete="name"></label>
+      <label>Дата<input id="bd" type="date"></label>
+      <label>Время<select id="bt"></select></label>
+      <label>Количество гостей<input id="bg" type="number" min="1" max="50" value="2"></label>
+      <label class="full">Зал / столик<select id="bh">
+        <option value="Любой свободный">Любой свободный стол</option>
+        <option disabled>— 1 этаж —</option>
+        <option value="Столик 1 (1 этаж)">Столик 1</option><option value="Столик 2 (1 этаж)">Столик 2</option><option value="Столик 3 (1 этаж)">Столик 3</option><option value="Столик 4 (1 этаж)">Столик 4</option><option value="Столик 5 (1 этаж)">Столик 5</option><option value="Столик 6 (1 этаж)">Столик 6</option>
+        <option disabled>— VIP-залы —</option>
+        <option value="VIP-1" data-cap="15">VIP-1 (до 15 человек, 500 ₸/час)</option><option value="VIP Камин" data-cap="15">VIP Камин (до 15 человек, 500 ₸/час)</option><option value="VIP Банкет" data-cap="25">VIP Банкет (до 25 человек, 500 ₸/час)</option>
+        <option disabled>— 2 этаж —</option>
+        <option value="Столик 8 (2 этаж)">Столик 8</option><option value="Столик 9 (2 этаж)">Столик 9</option><option value="Столик 10 (2 этаж)">Столик 10</option><option value="Столик 11 (2 этаж)">Столик 11</option><option value="Столик 12 (2 этаж)">Столик 12</option><option value="Столик 13 (2 этаж)">Столик 13</option><option value="Столик 14 (2 этаж)">Столик 14</option><option value="Столик 15 (2 этаж)">Столик 15</option><option value="Столик 16 (2 этаж)">Столик 16</option><option value="Столик 17 (2 этаж)">Столик 17</option><option value="Столик 18 (2 этаж)">Столик 18</option>
+      </select></label>
+      <label class="full">Пожелания (необязательно)<input id="bc" type="text"></label>
+      <p class="berr" id="berr" role="alert"></p>
+      <button class="btn" type="submit">Отправить в WhatsApp</button>
+      <p class="bnote">Заявка уходит администратору, бронь считается подтверждённой после его ответа.</p>
+    </form>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="wrap">
+    <h2>Контакты</h2>
+    <div class="note"><strong style="color:var(--accent2);font-weight:400">Адрес</strong><br>Улица Ленина, 29, Житикара, Костанайская область<br><br><strong style="color:var(--accent2);font-weight:400">Телефон</strong><br><a href="tel:+77776452020" style="color:var(--text)">+7 777 645 2020</a><br><br><strong style="color:var(--accent2);font-weight:400">Часы работы</strong><br>Со вторника по воскресенье: 11:00–01:00<br>Понедельник: выходной<br><br><a href="https://www.google.com/maps/search/?api=1&query=%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0+29+%D0%96%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%D1%80%D0%B0" target="_blank" rel="noopener" style="color:var(--accent2)">Открыть на карте</a></div>
+  </div>
+</section>
+
+<footer>
+  <strong>Старый Егерь</strong>
+  Шашлыки, первые и вторые блюда, салаты, фастфуд и бар
+</footer>
+<div class="modal" id="menumodal" hidden role="dialog" aria-modal="true" aria-labelledby="mmt">
+  <div class="mbox">
+    <button class="mclose" type="button" aria-label="Закрыть">×</button>
+    <h2 id="mmt">Полное меню</h2>
+    <div class="mtabs" id="mtabs"></div>
+    <div class="mscroll" id="mbody"></div>
+  </div>
+</div>
+<script>
+(function(){
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var box=document.querySelector('.sparks');
+    if(!box)return;
+    for(var i=0;i<40;i++){
+      var s=document.createElement('span');
+      var size=3+Math.random()*6;
+      s.className='spark';
+      s.style.left=(Math.random()*100)+'%';
+      s.style.width=s.style.height=size+'px';
+      s.style.setProperty('--t',(7+Math.random()*8)+'s');
+      s.style.setProperty('--d',(-Math.random()*10)+'s');
+      s.style.setProperty('--dx',((Math.random()-.5)*160)+'px');
+      box.appendChild(s);
+    }
+  }catch(e){}
+})();
+</script>
+<script>
+(function(){
+var L=['Наполеон','Баранина','Курица','Утка','Свинина','Люля','Первые блюда','Вторые блюда','Пиццы','Роллы','Донеры','Хачапури','Салаты','Прага','Закуски к пиву','Алкогольные коктейли','Шоты','Молочные коктейли'];
+document.querySelectorAll('.marquee .track').forEach(function(t){
+var h='';
+for(var k=0;k<2;k++)L.forEach(function(w){h+='<span>'+w+'</span><i>◆</i>'});
+t.innerHTML=h;
+});
+})();
+</script>
+<script>
+(function(){
+var D={"Мангал · Пицца · Пиво":"Мангал · Пицца · Сыра","Шашлыки":"Шашлықтар","Кухня":"Асхана","Контакты":"Байланыс","Шашлыки на углях, пицца, роллы и холодное пиво. Заходите большой компанией.":"Шоқта пісірілген шашлық, пицца, роллдар және салқын сыра. Үлкен компаниямен келіңіздер.","Смотреть меню":"Мәзірді көру","Забронировать стол":"Үстел брондау","Обслуживают официанты, и процент за обслуживание мы не берём":"Даяшылар қызмет көрсетеді, қызмет үшін пайыз алмаймыз","Шашлыки на углях":"Шоқтағы шашлықтар","Мясо маринуем сами и жарим на живом огне.":"Етті өзіміз маринадтаймыз және тірі отта қуырамыз.","Фирменное":"Фирмалық","Говядина с курдюком. Сочная, сытная и с насыщенным вкусом: курдюк тает на углях и пропитывает мясо. То, за чем к нам возвращаются.":"Құйрық майы қосылған сиыр еті. Шыршынды, тоқтық беретін, дәмі бай: құйрық майы шоқта еріп, етті сіңіреді. Бізге қайта оралатын себеп.","Баранина":"Қой еті","Нежное мясо с ароматом дымка.":"Түтін иісі бар жұмсақ ет.","Курица":"Тауық","Мягкая и румяная, в пряном маринаде.":"Жұмсақ әрі қызартылған, дәмдеуішті маринадта.","Куриное филе":"Тауық филесі","Окорочка":"Тауық сирағы","Утка":"Үйрек","Ароматное мясо с хрустящей корочкой.":"Қытырлақ қабығы бар хош иісті ет.","Утиное филе":"Үйрек филесі","Свинина":"Шошқа еті","Сочная, с золотистой корочкой.":"Шыршынды, алтын түсті қабығымен.","Шея":"Мойын",": жирная, сочная":": майлы, шыршынды","Карбонат":"Карбонат",": нежирная, сухая":": майсыз, қуарған","Корейка":"Қабырға",": свинина на рёбрах":": қабырғасымен шошқа еті","Люля":"Люля","Рубленое мясо со специями на шпампуре.":"Шампурдағы дәмдеуішті туралған ет.","Из кухни":"Асханадан","Кроме мангала, у нас есть блюда на любой вкус.":"Мангалдан басқа, кез келген талғамға арналған тағамдар бар.","Пиццы":"Пиццалар","Горячие, прямо из печи.":"Ыстық, тікелей пештен.","Фирменная":"Фирмалық","И другие":"Және басқалары","Роллы":"Роллдар","Нежный рис, нори и свежая начинка.":"Нәзік күріш, нори және балғын толтырма.","Холодные":"Суық","Запечённые":"Пісірілген","Жареные":"Қуырылған","Донеры":"Донерлер","Сытно и быстро.":"Тоқтық беретін әрі жылдам.","Классические":"Классикалық","Румяное тесто и тягучая начинка.":"Қызарған қамыр және созылмалы толтырма.","С сыром":"Ірімшікпен","С ветчиной":"Ветчинамен","Салаты":"Салаттар","Свежие овощи и сытные заправки к мясу и пиву.":"Балғын көкөністер мен тоқтық беретін тұздықтар, етке және сыраға.","Цезарь с креветкой":"Асшаяны бар Цезарь","Цезарь с лососем":"Албырты бар Цезарь","Цезарь с курицей":"Тауығы бар Цезарь","Тайский":"Тай салаты","Баклажаны Лаоганма":"Лаоганма баклажандары","Пиво к шашлыку, коктейли для компании и молочные коктейли для всех остальных.":"Шашлыққа сыра, компанияға коктейльдер, ал қалғандарға сүт коктейльдері.","Пиво":"Сыра","Прага и Легенда всегда в меню. Рудный бывает не всегда, поэтому уточняйте у официантов или администратора. К пиву у нас есть закуски.":"Прага мен Легенда мәзірде әрқашан бар. Рудный әрқашан бола бермейді, сондықтан даяшылардан немесе әкімшіден сұраңыз. Сыраға арналған тағамдар бар.","Закуски к пиву":"Сыраға арналған тағамдар","Чтобы пиво шло лучше.":"Сыра дәмдірек болу үшін.","Пивная тарелка 1":"Сыра табағы 1","Пивная тарелка 2":"Сыра табағы 2","Пивный сет 3":"Сыра сеті 3","Пивный сет 4":"Сыра сеті 4","Гренки":"Гренкилер","Сырные палочки":"Ірімшік таяқшалары","И другое":"Және басқасы","Алкогольные коктейли":"Алкогольді коктейльдер","Для хорошего вечера.":"Тамаша кеш үшін.","Голубая лагуна":"Көк лагуна","Молочные коктейли":"Сүт коктейльдері","Сладкие и холодные.":"Тәтті және салқын.","Малина":"Таңқұрай","Клубника":"Құлпынай","Банан":"Банан","Чтобы получить полное меню, обратитесь по рабочему номеру.":"Толық мәзірді алу үшін жұмыс нөміріне хабарласыңыз.","О заведении":"Мекеме туралы","«Старый Егерь» — это место, где всё начинается с живого огня. Мы маринуем мясо сами и жарим его на углях: сочную баранину, нежную курицу, утку, свинину, ароматную люля и наш фирменный «Наполеон» — говядину с курдюком, из-за которой к нам возвращаются.":"«Старый Егерь» — бәрі тірі оттан басталатын орын. Етті өзіміз маринадтап, шоқта қуырамыз: шыршынды қой еті, нәзік тауық, үйрек, шошқа еті, хош иісті люля және біздің фирмалық «Наполеон» — құйрық майы қосылған сиыр еті, соның арқасында бізге қайта оралады.","Но шашлыком дело не ограничивается. У нас найдётся всё, чтобы за одним столом каждый выбрал своё: горячие пиццы, роллы, донеры, хачапури. К холодному пиву — пивные тарелки и сеты, гренки и сырные палочки. А для настроения — яркие коктейли и молочные коктейли.":"Бірақ шашлықпен шектелмейміз. Бір үстел басында әркім өзіне ұнағанын таңдауы үшін бәрі бар: ыстық пиццалар, роллдар, донерлер, хачапури. Салқын сыраға — сыра табақтары мен сеттер, гренкилер және ірімшік таяқшалары. Көңіл-күй үшін — жарқын коктейльдер және сүт коктейльдері.","Приходите после работы, в выходные или большой компанией по любому поводу. Вас встретят и обслужат официанты, а процент за обслуживание мы не берём: платите только за то, что заказали. Садитесь поудобнее, остальное сделаем мы.":"Жұмыстан кейін, демалыс күндері немесе кез келген себеппен үлкен компаниямен келіңіздер. Сізді даяшылар қарсы алып, қызмет көрсетеді, ал қызмет үшін пайыз алмаймыз: тек тапсырыс бергеніңіз үшін төлейсіз. Жайғасыңыз, қалғанын өзіміз жасаймыз.","Без процентов за обслуживание":"Қызмет үшін пайызсыз","Официанты есть, наценки нет":"Даяшылар бар, үстеме баға жоқ","Баранина, курица, утка, свинина, люля, наполеон":"Қой еті, тауық, үйрек, шошқа еті, люля, наполеон","Большое меню":"Үлкен мәзір","Пицца, роллы, донеры, хачапури":"Пицца, роллдар, донерлер, хачапури","Пиво, коктейли, молочные коктейли":"Сыра, коктейльдер, сүт коктейльдері","Адрес":"Мекенжай","Улица Ленина, 29, Житикара, Костанайская область":"Ленин көшесі, 29, Жітіқара, Қостанай облысы","Часы работы":"Жұмыс уақыты","Со вторника по воскресенье: 11:00–01:00":"Сейсенбіден жексенбіге дейін: 11:00–01:00","Понедельник: выходной":"Дүйсенбі: демалыс күні","Открыть на карте":"Картадан ашу","Шашлыки, пицца, роллы, салаты и пиво":"Шашлық, пицца, роллдар, салаттар және сыра","Заполните форму, и мы откроем WhatsApp с готовым сообщением. Останется нажать «Отправить».":"Форманы толтырыңыз, біз WhatsApp-ты дайын хабарламамен ашамыз. «Жіберу» батырмасын басу ғана қалады.","Ваше имя":"Атыңыз","Дата":"Күні","Время":"Уақыты","Количество гостей":"Қонақтар саны","Пожелания (необязательно)":"Тілектер (міндетті емес)","Отправить в WhatsApp":"WhatsApp-қа жіберу","Заявка уходит администратору, бронь считается подтверждённой после его ответа.":"Өтініш әкімшіге жіберіледі, брон оның жауабынан кейін расталған болып саналады.","Зал / столик":"Зал / үстел","Любой свободный стол":"Кез келген бос үстел","— 1 этаж —":"— 1-қабат —","— 2 этаж —":"— 2-қабат —","— VIP-залы —":"— VIP-залдар —","VIP-1 (до 15 человек, 500 ₸/час)":"VIP-1 (15 адамға дейін, сағатына 500 ₸)","VIP Камин (до 15 человек, 500 ₸/час)":"VIP Камин (15 адамға дейін, сағатына 500 ₸)","VIP Банкет (до 25 человек, 500 ₸/час)":"VIP Банкет (25 адамға дейін, сағатына 500 ₸)","Полное меню":"Толық мәзір","Открыть полное меню":"Толық мәзірді ашу","Первые блюда":"Бірінші тағамдар","Вторые блюда":"Екінші тағамдар","Горячие и наваристые.":"Ыстық әрі қойық.","Сытные горячие блюда.":"Тоқтық беретін ыстық тағамдар.","Шоты":"Шоттар","Компактные порции для весёлой компании.":"Көңілді компанияға арналған шағын порциялар.","Отзывы":"Пікірлер","Отзывы гостей":"Қонақтар пікірлері","Что о нас говорят гости. Будем рады и вашему отзыву.":"Қонақтар біз туралы не айтады. Сіздің пікіріңізге де қуаныштымыз.","Отзывы с Яндекс Карт":"Яндекс Карталарынан алынған пікірлер","Оставить отзыв на Яндекс Картах":"Яндекс Карталарында пікір қалдыру","Оставить отзыв в 2ГИС":"2ГИС-те пікір қалдыру","Первые и вторые блюда, пицца, роллы, донеры, хачапури, салаты":"Бірінші және екінші тағамдар, пицца, роллдар, донерлер, хачапури, салаттар","Пиво, коктейли, шоты, молочные коктейли":"Сыра, коктейльдер, шоттар, сүт коктейльдері","Заказать онлайн":"Онлайн тапсырыс","Фастфуд":"Фаст-фуд","Шашлыки, первые и вторые блюда, салаты, фастфуд и бар":"Шашлық, бірінші және екінші тағамдар, салаттар, фастфуд және бар"};
+for(var ti=1;ti<=18;ti++)D['Столик '+ti]=ti+'-үстел';
+var nodes=[];
+try{
+var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
+while(n=w.nextNode()){
+if(n.parentNode.nodeName==='SCRIPT')continue;
+var m=n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);
+if(m[2]&&Object.prototype.hasOwnProperty.call(D,m[2]))nodes.push({n:n,o:n.nodeValue,k:m[2],a:m[1],b:m[3]});
+}
+}catch(e){}
+function setLang(l){
+nodes.forEach(function(x){x.n.nodeValue=l==='kz'?x.a+D[x.k]+x.b:x.o});
+document.documentElement.lang=l==='kz'?'kk':'ru';
+document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l?'true':'false')});
+try{localStorage.setItem('lang',l)}catch(e){}
+if(typeof replay==='function')replay();
+}
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+try{if(localStorage.getItem('lang')==='kz')setLang('kz')}catch(e){}
+if(document.documentElement.classList.contains('js')){
+var els=document.querySelectorAll('.dish,.note,.about p,.facts li');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('in',e.isIntersecting)})},{threshold:.08});
+els.forEach(function(el,i){el.classList.add('rv');el.style.animationDelay=(i%3)*90+'ms';io.observe(el)});
+}
+function replay(){if(!els)return;els.forEach(function(el){var r=el.getBoundingClientRect();var vis=r.top<window.innerHeight&&r.bottom>0;el.classList.remove('in');if(vis){void el.offsetWidth;el.classList.add('in')}})}
+})();
+</script>
+<script>
+(function(){
+var f=document.getElementById('bookform');if(!f)return;
+var t=document.getElementById('bt'),d=document.getElementById('bd'),err=document.getElementById('berr');
+for(var h=11;h<=24;h++){[0,30].forEach(function(m){if(h===24&&m===30)return;var hh=h%24;var v=(hh<10?'0':'')+hh+':'+(m?'30':'00');var o=document.createElement('option');o.value=v;o.textContent=v;if(v==='19:00')o.selected=true;t.appendChild(o)})}
+var n=new Date();var iso=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');d.min=iso;
+f.addEventListener('submit',function(e){e.preventDefault();
+var kz=document.documentElement.lang==='kk';
+var name=document.getElementById('bn').value.trim(),date=d.value,time=t.value,g=document.getElementById('bg').value,c=document.getElementById('bc').value.trim();
+var bh=document.getElementById('bh'),bo=bh.options[bh.selectedIndex];
+if(!name||!date||!time||!g){err.textContent=kz?'Барлық міндетті өрістерді толтырыңыз.':'Заполните все обязательные поля.';return}
+if(date<iso){err.textContent=kz?'Болашақ күнді таңдаңыз.':'Выберите будущую дату.';return}
+var p=date.split('-');var dt=new Date(+p[0],+p[1]-1,+p[2]);
+if(dt.getDay()===1){err.textContent=kz?'Дүйсенбі — демалыс күні. Басқа күнді таңдаңыз.':'В понедельник мы не работаем. Выберите другой день.';return}
+var cap=+bo.getAttribute('data-cap')||0;if(cap&&+g>cap){err.textContent=kz?'Бұл залға '+cap+' адамға дейін сыяды.':'В этот зал помещается до '+cap+' человек.';return}
+err.textContent='';
+var days=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+var msg='Здравствуйте! Хочу забронировать стол в «Старом Егере».\nИмя: '+name+'\nДата: '+p[2]+'.'+p[1]+'.'+p[0]+' ('+days[dt.getDay()]+')\nВремя: '+time+'\nСтол: '+bh.value+'\nГостей: '+g+(c?'\nПожелания: '+c:'');
+window.open('https://wa.me/77776452020?text='+encodeURIComponent(msg),'_blank','noopener');
+});
+})();
+</script>
+<script>
+(function(){
+var m=document.getElementById('menumodal'),body=document.getElementById('mbody'),openBtn=document.getElementById('openmenu');
+if(!m||!body||!openBtn)return;
+var closeBtn=m.querySelector('.mclose'),last=null;
+function build(){
+body.innerHTML='';
+['menu','kitchen','bar'].forEach(function(id){
+var s=document.getElementById(id);if(!s)return;
+var sec=document.createElement('div');sec.className='msec';
+var h=document.createElement('h3');h.textContent=s.querySelector('h2').textContent;sec.appendChild(h);
+s.querySelectorAll('.dish').forEach(function(c){
+var d=document.createElement('div');d.className='mitem';
+var t=document.createElement('h4');t.textContent=c.querySelector('h3').textContent;d.appendChild(t);
+var ul=c.querySelector('.sub');
+if(ul){d.appendChild(ul.cloneNode(true))}else{var p=c.querySelector('p');if(p){var q=document.createElement('p');q.textContent=p.textContent;d.appendChild(q)}}
+sec.appendChild(d);
+});
+body.appendChild(sec);
+});
+body.scrollTop=0;
+}
+function open(){last=document.activeElement;build();m.hidden=false;document.body.classList.add('mopen');closeBtn.focus()}
+function close(){m.hidden=true;document.body.classList.remove('mopen');if(last&&last.focus)last.focus()}
+openBtn.addEventListener('click',open);
+closeBtn.addEventListener('click',close);
+m.addEventListener('click',function(e){if(e.target===m)close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});
+})();
+</script>
+<script>
+(function(){
+var m=document.getElementById('menumodal'),body=document.getElementById('mbody'),tabs=document.getElementById('mtabs');
+if(!m||!body||!tabs)return;
+var closeBtn=m.querySelector('.mclose'),lastA=-1;
+var S=[
+['Шашлык','Шашлық',`Свинина шея|300 гр.|3200
+Свинина карбонат|300 гр.|3000
+Свинина корейка|450 гр.|3000
+Баранина|300 гр.|3600
+Люля-кебаб из баранины|300 гр.|2800
+Утка|300 гр.|2700
+Окорочка|400 гр.|2400
+Куриное филе|300 гр.|2700
+Наполеон|говядина с курдюком|3600
+Грибы||1700
+Овощи||1400`],
+['Салаты','Салаттар',`Сельдь под шубой|сельдь, картошка, яйцо, свекла, майонез, морковь|2000
+Греческий|огурцы, помидоры, брынза, перец сладкий, маслины, лук красный, салат|1800
+Тайский|мясо говядины, огурец, перец сладкий, соя|2500
+Морской бриз|помидор, крабовые палочки, перец сладкий, майонез|1800
+Мужской каприз|ананас, грецкий орех, сыр, куриное филе, яйцо, майонез|2200
+Свежий|огурец, помидор, лук|1350
+Морковь корейская|морковь|900
+Филадельфия|лосось, огурец, творожный сыр, рис, нори|2800
+Ачучук|перец сладкий, помидор, перец острый, красный лук|1500
+Ашлянфу|лапша крахмальная, мясо говядина, перец сладкий|1900
+Цезарь с курицей|пекинская капуста, куриное филе, сыр, сухарики, яйцо, помидор, соус|2000
+Цезарь с лососем|пекинская капуста, лосось, сыр, сухарики, яйцо, помидор, соус|2400
+Цезарь с креветкой|пекинская капуста, креветки, сыр, сухарики, яйцо, помидор, соус|2400
+Оливье|колбаса, огурец, картошка, горошек, морковь, яйцо, майонез|1700
+Свежесть|айсберг, семга, яйцо, черри, огурец, сыр, соус|2200
+Мясная феерия|куриное филе, ветчина, язык говяжий, помидор, сладкий перец, яйцо, маслины, майонез|2300
+Пикантный|баклажан и кабачок темпура, помидор, брынза, зелень, соус|2000
+Баклажан лаоганма|черри, айсберг, баклажан, соус|2600
+Хрустящий шампиньон|черри, айсберг, шампиньон, соус|2600
+Гнездо глухаря|маринованный огурец, колбаса, помидор, куриное филе, майонез, яйцо|2000
+Императорский|колбаса, сыр, огурец свежий, морковь, кукуруза, майонез|1700
+Советский|кириешки, колбаса, огурец, помидор, морковь корейская, сыр|1900`],
+['Первые блюда','Бірінші тағамдар',`Том-ям классический||2600
+Том-ям с морепродуктами||2800
+Мясо по-казахски||2800
+Шурпа из баранины||1800
+Окрошка||1700
+Уха царская|семга|1900
+Нарын||2100`],
+['Вторые блюда','Екінші тағамдар',`Куурдак из баранины|печень, легкое, сердце, лук, картошка|2100
+Казан-кебаб|баранина, картофель, овощи|2700
+Гуйру лагман|говядина, овощи, лапша|2600
+Цомян|жареный лагман: говядина, овощи, лапша|2600
+Суйру лагман|лагман с бульоном, говядина, овощи, лапша|2600
+Ган-фан|овощи, мясо говядины, рис|2600
+Ашлянфу с лососем|лапша, лосось, морковь корейская, черри, перец сладкий, грибы|2800
+Пельмени|вареные / жареные, говядина|1800
+Манты|вареные / жареные, говядина|2600
+Стейк свинина|свинина|2500
+Стейк тибон|соус красный, картофельные дольки|4500
+Стейк семги|семга, овощи, белый соус|4500
+Курица с овощами|куриное филе, овощи|2700
+Говядина с овощами|говядина, овощи|2700
+Филе лосося в белом соусе|рис, черри, брокколи, фасоль стручковая, семга|4000
+Куриное филе|с грибами в белом соусе|2700
+Телятина с грибами в белом соусе||3200
+Утиное филе|с картофелем в соусе BBQ|2800
+Баранина с овощами||3100
+Удон с курицей|курица, лапша удон, кабачок, перец сл., морковь, лук, порей, грибы, соус устричный и терияки, соевый соус|2250
+Удон с говядиной|говядина, лапша удон, кабачок, перец сл., морковь, лук, порей, грибы, соус устричный и терияки, соевый соус|2600
+Удон с креветками|креветки, лапша удон, кабачок, перец сл., морковь, лук, порей, грибы, соус устричный и терияки, соевый соус|2800
+Мясо по-тайски с рисом|говядина, овощи, рис|3400`],
+['Гарниры','Гарнирлер',`Фри||800
+Картофельное пюре||700
+Рис припущенный||450
+Дольки картофельные|5 шт.|550`],
+['Закуски','Жеңіл тағамдар',`Русская закуска|сельдь, картофель, соленый огурец|2400
+Сет из сельди|картофельные дольки, сельдь, лук, хлебный багет|2400
+Сет под водочку|сало, маринованный огурчик, гренки, бекон, гриб жареный|2400
+Кавказская нарезка|огурец, помидор, перец сладкий, редис, брынза, зелень|2400
+Овощная нарезка|огурец, помидор|1200
+Фруктовая нарезка|банан, яблоко, апельсин, киви, груша, мандарин|2800
+Капрезе|помидоры, моцарелла, соус песто|2000`],
+['Паста','Паста',`Паста том ям||3000
+Карбонара||2250
+С лососем||2800
+С креветками||2800
+С курицей и грибами||2700`],
+['Соусы','Тұздықтар',`Белый / красный||350
+Горчичный||350
+Тар-тар / сырный||350
+Барбекю / сметана||350`],
+['Пицца (30 см)','Пицца (30 см)',`4 сезона|ветчина, грибы, помидоры, кукуруза, сыр|2950
+Цезарь|курица-гриль, помидор, сыр, маслины, пекинская капуста|2950
+Пепперони|соус, сыр, колбаса пепперони|2950
+Маргарита|соус томатный, помидоры, сыр|2000
+Ассорти|колбаса 4 вида, сыр, маслины, соус|2950
+Итальянская|соус, колбаски пепперони, сыр, грибы, итальянские травы, маслины|2700
+Фирменная|колбаски пепперони, ветчина, соус, сыр|3050
+Барбекю|ветчина, соус барбекю, зелень, лук, сыр|2700
+Гавайская|курица, сыр, ананас|2950
+Песто|курица, брынза, помидор, песто соус|3150
+Мексиканская|кукуруза, острый перчик, перец болгарский, ветчина, сыр|2600
+Жюльен|курица, грибы, сыр, красный лук|2600
+Сырная|моцарелла, пармезан, брынза|2700
+Домашняя|пепперони, ветчина, маринованный огурчик, помидор, сыр|2800
+Ветчина и сыр|ветчина, сыр|2800
+Ветчина и грибы|ветчина, грибы, сыр|2800
+Пицца с лососем||3150
+Коробка на вынос||300`],
+['Хачапури','Хачапури',`По-аджарски / по-имеретински||2250
+По-аджарски с ветчиной||2500
+По-мегрельски||2550
+Коробка на вынос||300`],
+['Фаст-фуд','Фаст-фуд',`Денер в лаваше|курица, фри, огурцы, помидоры, капуста, морковь, соус|1700
+Денер жареный|курица, фри, огурцы, помидоры, капуста, морковь, соус|1900
+Стрипсы|курица|1200
+Фри||800
+Наггетсы||900`],
+['Блюда на общий стол (по предзаказу)','Ортақ дастарханға (алдын ала тапсырыспен)',`Бешбармак|ваше мясо и тесто|8000
+Королевский плов|на 5 / 8 чел.|12000 / 14000
+Курица по-гречески|наша / ваша|5600 / 2250
+Щедрый дастархан|на 10 чел.: манты жареные - 10 шт., долма - 10 шт., крылышки - 10 шт.|15000
+Рулетики|кабачок, баклажан - 1 шт.|350
+Чебуречки (говядина) / самса (курица)|по 0,5|1900
+Баурсаки|0,5|1200`],
+['К пиву','Сыраға',`Чебуречки мелкие|6 шт.|1500
+Сырные палочки|5 шт.|1350
+Луковые кольца||900
+Креветки||4800
+Креветки в кляре|7 шт.|3700
+Чечил темпура||1700
+Кольца кальмара в панировке||1200
+Гренки чесночные||900
+Пивная тарелка № 1|чечил, арахис, чипсы, сухарики|2700
+Пивная тарелка № 2|кольца кальмара, стружка тунца, янтарная рыбка, сухарики|3200
+Пивной сет «Микс» № 1|соус белый, кетчуп, гренки, креветки, пельмешки, чебуречки, фисташки, фри, чечил, охотничьи колбаски|14500
+Пивной сет «Микс» № 2|соус белый, кетчуп, охотничьи колбаски, креветки, чечил темпура, луковые кольца, гренки|11500
+Пивной сет № 3|чечил, фри, лук кольца, гренки, соус белый, кетчуп|5500
+Пивной сет № 4|гренки, чечил, темпура, креветки, соус белый|8000
+Пивной сет № 5|гренки, луковые кольца, соус белый, кетчуп|2400`],
+['Холодные напитки','Салқын сусындар',`Лимонад 1 л.|киви-яблоко / мохито / клубничный / голубая лагуна|1800
+Компот 1 л.||1500
+Морс 1 л.|облепиховый / клюквенный|2200`],
+['Чай (0,5 / 1 л)','Шай (0,5 / 1 л)',`Черный / зеленый||500 / 1400
+Облепиховый||700 / 1400
+Турецкий / ташкентский||700 / 1400
+Груша с корицей / клюквенный|зеленый чай|700 / 1400
+Фруктовый Simatea|1 капсула|700
+Фруктовый сбор № 1|манго, клубника, мята, корица|1500 / 2000
+Фруктовый сбор № 2|малина, вишня, лайм, мята, зеленый чай|1500 / 2000
+Фруктовый сбор № 3|чай зеленый, смородина, гвоздика, лимон, мед, корица|1500 / 2000
+Черный / зеленый|чашка|150
+Чай черный с молоком / лимоном||200`],
+['Кофе (0,4 / 0,2)','Кофе (0,4 / 0,2)',`Американо / доппио двойной||1400 / 700
+Латте / латте макиато||1400 / 700
+Айс кофе||1600 / 800`],
+['Молочные коктейли','Сүт коктейльдері',`Молочный коктейль|яблоко / апельсин / клубника / малина / кокос / карамель / ваниль / голубая лагуна|900
+Мороженое в креманках||900`],
+['Алкогольные коктейли','Алкогольді коктейльдер',`Мохито|светлый ром, лайм, тростниковый сахар, спрайт, мята|1500
+Голубая лагуна|арак или водка, спрайт, блю кюрасао, лёд|1500
+Пина колада|ром, ананасовый сок, кокосовое молоко, лёд|1900
+Апероль|апероль, просекко, содовая, апельсин, лёд|2000
+Мартини рояль|мартини, просекко, лайм, мята, лёд|2000
+Лонг айленд|арак или водка, ром, текила|2000
+Отвертка|водка или арак, апельсиновый сок, лёд, долька апельсина|850
+Виски кола|виски, кола, лёд|1500
+Мимоза|просекко, апельсиновый сок|1500`],
+['Шоты (3 шт. / 6 шт.)','Шоттар (3 / 6 дана)',`Б-52||1600 / 3200
+Флаг России||1200 / 2500
+Выстрел в голову||1600 / 3300
+Текила шот||2500 / 4500
+Апельсиновый цвет||1200 / 2500
+Джин физ||1200 / 2500`]
+];
+window.__S=S;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function fmt(p){return p.replace(/\d{4,}/g,function(n){return n.replace(/\B(?=(\d{3})+(?!\d))/g,'\u202f')})+' ₸'}
+function build(){
+var kz=document.documentElement.lang==='kk';
+body.innerHTML='';tabs.innerHTML='';lastA=-1;
+S.forEach(function(s,i){
+var title=kz?s[1]:s[0];
+var sec=el('div','msec');sec.id='ms'+i;sec.appendChild(el('h3',null,title));
+s[2].split('\n').forEach(function(l){
+var p=l.split('|');var it=el('div','mi');var r=el('div','row');
+r.appendChild(el('span','n',p[0]));r.appendChild(el('span','dots'));r.appendChild(el('span','pr',fmt(p[2])));
+it.appendChild(r);if(p[1])it.appendChild(el('div','d',p[1]));sec.appendChild(it);
+});
+body.appendChild(sec);
+var b=el('button','mtab'+(i===0?' on':''),title);b.type='button';
+b.addEventListener('click',function(){body.scrollTo({top:document.getElementById('ms'+i).offsetTop-4,behavior:'smooth'})});
+tabs.appendChild(b);
+});
+body.scrollTop=0;tabs.scrollLeft=0;
+}
+body.addEventListener('scroll',function(){
+var y=body.scrollTop+30,a=0;
+for(var i=0;i<S.length;i++){var s=document.getElementById('ms'+i);if(s&&s.offsetTop<=y)a=i}
+var bs=tabs.children;
+for(var j=0;j<bs.length;j++)bs[j].classList.toggle('on',j===a);
+if(bs[a]&&lastA!==a){lastA=a;tabs.scrollTo({left:Math.max(0,bs[a].offsetLeft-24),behavior:'smooth'})}
+});
+document.addEventListener('click',function(e){
+var b=e.target.closest&&e.target.closest('#openmenu');if(!b)return;
+e.stopPropagation();e.preventDefault();
+build();m.hidden=false;document.body.classList.add('mopen');closeBtn.focus();
+},true);
+})();
+</script>
+<script>
+(function(){
+var m=document.getElementById('menumodal'),box=m&&m.querySelector('.mbox'),body=document.getElementById('mbody'),openBtn=document.getElementById('openmenu'),ordBtn=document.getElementById('ordernow');
+if(!m||!box||!body||!openBtn)return;
+var cart={},st={mode:'take',ship:'pick',dt:'door',addr:'',name:'',comment:''};
+function t(a,b){return document.documentElement.lang==='kk'?b:a}
+function el(tag,c,x){var e=document.createElement(tag);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function money(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u202f')+' ₸'}
+function total(){var s=0,c=0;for(var k in cart){s+=cart[k].p*cart[k].q;c+=cart[k].q}return{s:s,c:c}}
+var bar=el('div','mbar');bar.hidden=true;
+var sum=el('span','sum'),go=el('button','btn');go.type='button';
+bar.appendChild(sum);bar.appendChild(go);box.appendChild(bar);
+var cv=el('div','mcartview');box.appendChild(cv);
+var pill=el('button');pill.id='cartpill';pill.type='button';pill.hidden=true;document.body.appendChild(pill);
+function draw(w){
+var k=w.getAttribute('data-k'),it=cart[k];w.innerHTML='';
+if(!it){var a=el('button','qb add','+');a.type='button';a.onclick=function(){chg(k,w._i,1)};w.appendChild(a);return}
+var mi=el('button','qb','−');mi.type='button';mi.onclick=function(){chg(k,it,-1)};
+var pl=el('button','qb','+');pl.type='button';pl.onclick=function(){chg(k,it,1)};
+w.appendChild(mi);w.appendChild(el('span','qn',String(it.q)));w.appendChild(pl);
+}
+function mk(k,info){var w=el('span','qc');w.setAttribute('data-k',k);w._i=info;draw(w);return w}
+function chg(k,info,d){
+var it=cart[k]||(cart[k]={n:info.n,v:info.v,p:info.p,q:0});
+it.q+=d;if(it.q<=0)delete cart[k];refresh();
+}
+function refresh(){
+body.querySelectorAll('.qc').forEach(draw);
+var T=total();
+bar.hidden=!T.c||box.classList.contains('cartmode');
+sum.textContent=t('Корзина','Себет')+': '+T.c+' · '+money(T.s);
+go.textContent=t('Оформить','Рәсімдеу');
+pill.textContent=t('Корзина','Себет')+' · '+T.c+' · '+money(T.s);
+pill.hidden=!T.c||!m.hidden;
+if(box.classList.contains('cartmode'))upd();
+}
+function vl(title,name,n){
+if(n<2)return[''];
+if(/^Чай/.test(title))return['0,5 л','1 л'];
+if(/^Кофе/.test(title))return['0,4','0,2'];
+if(/^Шоты/.test(title))return['3 шт.','6 шт.'];
+if(name==='Королевский плов')return['на 5 чел.','на 8 чел.'];
+if(name==='Курица по-гречески')return['наша','ваша'];
+return['вар. 1','вар. 2'];
+}
+function augment(){
+box.classList.remove('cartmode');
+(window.__S||[]).forEach(function(s,i){
+var sec=document.getElementById('ms'+i);if(!sec)return;
+var items=sec.querySelectorAll('.mi');
+s[2].split('\n').forEach(function(l,j){
+var it=items[j];if(!it)return;
+var p=l.split('|'),pr=p[2].split(' / ').map(Number),lb=vl(s[0],p[0],pr.length);
+if(pr.length===1){it.querySelector('.row').appendChild(mk(i+'_'+j+'_0',{n:p[0],v:'',p:pr[0]}))}
+else pr.forEach(function(x,v){var r=el('div','mv');r.appendChild(el('span','vl',lb[v]+' — '+money(x)));r.appendChild(mk(i+'_'+j+'_'+v,{n:p[0],v:lb[v],p:x}));it.appendChild(r)});
+});
+});
+refresh();
+}
+function upd(){
+var lines=document.getElementById('clines'),tt=document.getElementById('ctot');if(!lines||!tt)return;
+lines.innerHTML='';
+var keys=Object.keys(cart);
+if(!keys.length)lines.appendChild(el('p','bnote',t('Корзина пуста','Себет бос')));
+keys.forEach(function(k){
+var it=cart[k],r=el('div','cl'),nm=el('div','cn',it.n);
+if(it.v)nm.appendChild(el('small',null,it.v));
+r.appendChild(nm);
+var w=el('span','qc');w.setAttribute('data-k',k);w._i=it;draw(w);r.appendChild(w);
+r.appendChild(el('span','cs',money(it.p*it.q)));
+lines.appendChild(r);
+});
+var T=total(),d=st.mode==='take'?Math.round(T.s*0.1):0,fee=st.ship==='ship'?(st.dt==='flat'?800:600):0;
+tt.innerHTML='';
+function row(a,b,big){var r=el('div','tr'+(big?' big':''));r.appendChild(el('span',null,a));r.appendChild(el(big?'b':'span',null,b));tt.appendChild(r)}
+row(t('Сумма','Сомасы'),money(T.s));
+if(d)row(t('Скидка 10%','Жеңілдік 10%'),'−'+money(d));
+if(fee)row(t('Доставка','Жеткізу'),money(fee));
+row(t('Итого','Барлығы'),money(T.s-d+fee),true);
+}
+function buildCart(){
+cv.innerHTML='';
+var back=el('button','cback','← '+t('Назад в меню','Мәзірге оралу'));back.type='button';
+back.onclick=function(){box.classList.remove('cartmode');refresh()};
+cv.appendChild(back);
+cv.appendChild(el('h3','ch',t('Ваш заказ','Сіздің тапсырысыңыз')));
+var lines=el('div');lines.id='clines';cv.appendChild(lines);
+var seg=el('div','seg');
+[['take',t('С собой, −10%','Өзімен алып кету, −10%')]].forEach(function(o){
+var b=el('button',st.mode===o[0]?'on':'',o[1]);b.type='button';
+b.onclick=function(){st.mode=o[0];seg.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});upd()};
+seg.appendChild(b);
+});
+cv.appendChild(seg);
+var sh=el('div','seg'),dbox=el('div');
+dbox.style.display=st.ship==='ship'?'block':'none';
+[['pick',t('Самовывоз','Өзім барып аламын')],['ship',t('Доставка','Жеткізу')]].forEach(function(o){var b=el('button',st.ship===o[0]?'on':'',o[1]);b.type='button';b.onclick=function(){st.ship=o[0];sh.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});dbox.style.display=st.ship==='ship'?'block':'none';upd()};sh.appendChild(b)});
+cv.appendChild(sh);
+var ds=el('div','seg');
+[['door',t('До подъезда — 600 ₸','Кіреберіске дейін — 600 ₸')],['flat',t('До квартиры — 800 ₸','Пәтерге дейін — 800 ₸')]].forEach(function(o){var b=el('button',st.dt===o[0]?'on':'',o[1]);b.type='button';b.onclick=function(){st.dt=o[0];ds.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});upd()};ds.appendChild(b)});
+dbox.appendChild(ds);
+var af=el('div','cf'),ad=el('input');ad.type='text';ad.placeholder=t('Адрес доставки (улица, дом, подъезд, квартира)','Жеткізу мекенжайы (көше, үй, кіреберіс, пәтер)');ad.value=st.addr;ad.oninput=function(){st.addr=ad.value};
+af.appendChild(ad);dbox.appendChild(af);cv.appendChild(dbox);
+var f=el('div','cf');
+var n=el('input');n.type='text';n.placeholder=t('Ваше имя','Атыңыз');n.value=st.name;n.oninput=function(){st.name=n.value};
+var c=el('input');c.type='text';c.placeholder=t('Комментарий (необязательно)','Пікір (міндетті емес)');c.value=st.comment;c.oninput=function(){st.comment=c.value};
+f.appendChild(n);f.appendChild(c);cv.appendChild(f);
+var tt=el('div','tot');tt.id='ctot';cv.appendChild(tt);
+var err=el('p','berr');err.id='cerr';cv.appendChild(err);
+var send=el('button','btn',t('Отправить заказ в WhatsApp','Тапсырысты WhatsApp-қа жіберу'));send.type='button';send.onclick=sendOrder;cv.appendChild(send);
+cv.appendChild(el('p','bnote',t('Заказ уходит администратору, он подтвердит наличие блюд и время.','Тапсырыс әкімшіге жіберіледі, ол тағамдардың бар екенін және уақытын растайды.')));
+var clr=el('button','cback',t('Очистить корзину','Себетті тазалау'));clr.type='button';clr.onclick=function(){cart={};refresh()};cv.appendChild(clr);
+upd();
+}
+function showCart(){box.classList.add('cartmode');buildCart();refresh()}
+function sendOrder(){
+var T=total(),err=document.getElementById('cerr');
+if(!T.c){err.textContent=t('Корзина пуста.','Себет бос.');return}
+if(!st.name.trim()){err.textContent=t('Укажите имя.','Атыңызды жазыңыз.');return}
+if(st.ship==='ship'&&!st.addr.trim()){err.textContent=t('Укажите адрес доставки.','Жеткізу мекенжайын жазыңыз.');return}
+err.textContent='';
+var d=st.mode==='take'?Math.round(T.s*0.1):0,fee=st.ship==='ship'?(st.dt==='flat'?800:600):0,i=0;
+var msg='Здравствуйте! Хочу сделать заказ в «Старом Егере».\nТип: '+(st.mode==='take'?'С собой (скидка 10%)':'В зале')+'\n'+(st.ship==='ship'?'Доставка: '+(st.dt==='flat'?'до квартиры (800 ₸)':'до подъезда (600 ₸)')+'\nАдрес: '+st.addr.trim():'Самовывоз')+'\nИмя: '+st.name.trim()+'\n\nЗаказ:\n';
+Object.keys(cart).forEach(function(k){var it=cart[k];i++;msg+=i+'. '+it.n+(it.v?' ('+it.v+')':'')+' × '+it.q+' = '+money(it.p*it.q)+'\n'});
+msg+='\nСумма: '+money(T.s)+(d?'\nСкидка 10%: −'+money(d):'')+(fee?'\nДоставка: '+money(fee):'')+'\nИтого: '+money(T.s-d+fee);
+if(st.comment.trim())msg+='\nКомментарий: '+st.comment.trim();
+window.open('https://wa.me/77776452020?text='+encodeURIComponent(msg),'_blank','noopener');
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#openmenu');if(b)augment()},true);
+if(ordBtn)ordBtn.addEventListener('click',function(){openBtn.click()});
+go.onclick=showCart;
+pill.onclick=function(){openBtn.click();showCart()};
+new MutationObserver(refresh).observe(m,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
+</body>
+</html>
